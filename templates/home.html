@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b2f5b">
+
+    <title>Strategy</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <main class="page">
+        <section class="shell">
+            
+            </div>
+
+            <nav class="topbar" aria-label="رأس النظام">
+                <div class="brand">
+                    <div class="brand-mark" aria-hidden="true">
+                        <svg viewBox="0 0 48 48">
+                            <path
+                                d="M24 5l15 8.6v17.2L24 39.5 9 30.8V13.6L24 5z"
+                            />
+                            <path
+                                d="M24 14v20M14.5 19.5l19 11M33.5 19.5l-19 11"
+                            />
+                        </svg>
+                    </div>
+
+                    <div>
+                       
+                        </span>
+
+                        <strong>
+                            Strategy System
+                        </strong>
+                    </div>
+                </div>
+
+                <span class="system-badge">
+                    <i></i>
+                    النظام متاح | System Online
+                </span>
+            </nav>
+
+            <section class="hero">
+                <div class="hero-copy">
+                    <span class="pill">
+                        منصة داخلية لمؤشرات الاستراتجي | Internal Quality Platform
+                    </span>
+
+                    <h1>
+                       
+                        <br>
+                        <em></em>
+                    </h1>
+
+                    <p>
+                        ارفع ملف الماستر | Master Workbook ومجلد ملفات المؤشرات لمعالجة البيانات
+                        وإنشاء ملف النتائج والتقرير التنفيذي بشكل آلي وآمن.
+                        <span class="english-copy">
+                            Upload the master workbook and KPI source folder to generate
+                            the completed workbook and executive report.
+                        </span>
+                    </p>
+
+                    <div class="trust-row">
+                        <span>يدعم XLSX وXLSM | Supported Formats</span>
+                        <span>تقرير تنفيذي تلقائي | Executive Report</span>
+                    </div>
+                </div>
+
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="visual-card">
+                        <div class="visual-top">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <div class="visual-grid">
+                            <div class="metric">
+                                <small>الملفات</small>
+                                <strong>24</strong>
+                            </div>
+
+                            <div class="metric success">
+                                <small>نجاح</small>
+                                <strong>96%</strong>
+                            </div>
+
+                            <div class="chart-bars">
+                                <i style="height:34%"></i>
+                                <i style="height:58%"></i>
+                                <i style="height:46%"></i>
+                                <i style="height:78%"></i>
+                                <i style="height:66%"></i>
+                                <i style="height:92%"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="floating-chip chip-one">
+                        ✓ التحقق من الملفات
+                    </div>
+
+                    <div class="floating-chip chip-two">
+                        ↗ تقرير تنفيذي
+                    </div>
+                </div>
+            </section>
+
+            {% if error %}
+            <div class="alert alert-error" role="alert">
+                <div class="alert-icon">
+                    !
+                </div>
+
+                <div class="alert-content">
+                    <strong>
+                        تعذر إكمال العملية | Processing Failed
+                    </strong>
+
+                    <p>
+                        {{ error }}
+                    </p>
+
+                    {% if details %}
+                    <details>
+                        <summary>
+                            عرض التفاصيل التقنية | Technical Details
+                        </summary>
+
+                        <pre>{{ details }}</pre>
+                    </details>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+
+            <section class="workspace">
+<div class="section-heading"><div><span class="step-kicker">اختر البرنامج | STEP 01</span><h2>Program Selection</h2></div></div>
+<div class="upload-grid">
+<a href="/clinic-audit" class="upload-card" style="text-decoration:none;color:inherit;">
+<span class="upload-index">01</span><span class="upload-icon">🏥</span>
+<strong>Clinic Audit<small>Quality &amp; Accreditation</small></strong>
+<p>الدخول إلى نظام معالجة ملفات الاعتماد</p><span class="file-type">OPEN</span></a>
+<a href="/hqi" class="upload-card" style="text-decoration:none;color:inherit;">
+<span class="upload-index">02</span><span class="upload-icon">📊</span>
+<strong>HQI Process<small>Healthcare Quality Indicators</small></strong>
+<p>الدخول إلى نظام معالجة ملفات HQI</p><span class="file-type">OPEN</span></a>
+<a href="/adaa" class="upload-card" style="text-decoration:none;color:inherit;">
+<span class="upload-index">03</span><span class="upload-icon">📈</span>
+<strong>ADAA<small>Weekly &amp; Monthly Indicators</small></strong>
+<p>الدخول إلى نظام معالجة مؤشرات أداء</p><span class="file-type">OPEN</span></a>
+</div></section>
+
+            <footer>
+                
+                </span>
+
+                
+                </span>
+            </footer>
+
+        </section>
+    </main>
+
+    <script>
+        const form =
+            document.getElementById("uploadForm");
+
+        const masterInput =
+            document.getElementById("master");
+
+        const filesInput =
+            document.getElementById("files");
+
+        const masterCard =
+            document.getElementById("masterCard");
+
+        const folderCard =
+            document.getElementById("folderCard");
+
+        const masterSelection =
+            document.getElementById("masterSelection");
+
+        const folderSelection =
+            document.getElementById("folderSelection");
+
+        const summaryText =
+            document.getElementById("summaryText");
+
+        const filesCount =
+            document.getElementById("filesCount");
+
+        const totalSize =
+            document.getElementById("totalSize");
+
+        const submitButton =
+            document.getElementById("submitButton");
+
+        const loading =
+            document.getElementById("loading");
+
+        const processingMessage =
+            document.getElementById("processingMessage");
+
+
+        function formatSize(bytes) {
+            if (!bytes) {
+                return "0 MB";
+            }
+
+            const megabytes =
+                bytes / (1024 * 1024);
+
+            if (megabytes < 1) {
+                return `${Math.ceil(bytes / 1024)} KB`;
+            }
+
+            return `${megabytes.toFixed(1)} MB`;
+        }
+
+
+        function updateFileInformation() {
+            const master =
+                masterInput.files[0];
+
+            const sources =
+                Array.from(filesInput.files);
+
+            const totalBytes =
+                (master?.size || 0)
+                +
+                sources.reduce(
+                    (sum, file) => sum + file.size,
+                    0
+                );
+
+            masterSelection.textContent =
+                master
+                    ? master.name
+                    : "لم يتم اختيار ملف | No file selected";
+
+            folderSelection.textContent =
+                sources.length
+                    ? `${sources.length} ملف Excel محدد | Excel files selected`
+                    : "لم يتم اختيار مجلد | No folder selected";
+
+            masterCard.classList.toggle(
+                "selected",
+                Boolean(master)
+            );
+
+            folderCard.classList.toggle(
+                "selected",
+                sources.length > 0
+            );
+
+            filesCount.textContent =
+                sources.length;
+
+            totalSize.textContent =
+                formatSize(totalBytes);
+
+            if (master && sources.length) {
+                summaryText.textContent =
+                    `جاهز للمعالجة | Ready: ${master.name}`;
+            }
+            else if (master) {
+                summaryText.textContent =
+                    "تم اختيار الماستر — اختر مجلد المؤشرات | KPI Source Folder";
+            }
+            else if (sources.length) {
+                summaryText.textContent =
+                    "تم اختيار مجلد المؤشرات | KPI Source Folder — اختر ملف الماستر | Master Workbook";
+            }
+            else {
+                summaryText.textContent =
+                    "اختر ملف الماستر | Master Workbook ومجلد المؤشرات | KPI Source Folder للمتابعة";
+            }
+        }
+
+
+        [masterInput, filesInput].forEach(
+            input => {
+                input.addEventListener(
+                    "change",
+                    updateFileInformation
+                );
+            }
+        );
+
+
+        ["dragenter", "dragover"].forEach(
+            eventName => {
+                masterCard.addEventListener(
+                    eventName,
+                    () => masterCard.classList.add(
+                        "dragging"
+                    )
+                );
+
+                folderCard.addEventListener(
+                    eventName,
+                    () => folderCard.classList.add(
+                        "dragging"
+                    )
+                );
+            }
+        );
+
+
+        ["dragleave", "drop"].forEach(
+            eventName => {
+                masterCard.addEventListener(
+                    eventName,
+                    () => masterCard.classList.remove(
+                        "dragging"
+                    )
+                );
+
+                folderCard.addEventListener(
+                    eventName,
+                    () => folderCard.classList.remove(
+                        "dragging"
+                    )
+                );
+            }
+        );
+
+
+        form.addEventListener(
+            "submit",
+            function () {
+                submitButton.disabled = true;
+
+                submitButton
+                    .querySelector(".button-text")
+                    .textContent =
+                        "جاري المعالجة... | Processing...";
+
+                loading.hidden = false;
+
+                loading.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+                const messages = [
+                    "يتم الآن رفع الملفات | Upload ...",
+                    "جاري قراءة ملفات المؤشرات... | Reading KPI files...",
+                    "جاري مطابقة البيانات مع ملف الماستر | Master Workbook...",
+                    "يتم إنشاء ملف النتائج ولوحة المؤشرات... | Generating outputs..."
+                ];
+
+                let index = 0;
+
+                setInterval(
+                    () => {
+                        index =
+                            (index + 1)
+                            %
+                            messages.length;
+
+                        processingMessage.textContent =
+                            messages[index];
+                    },
+                    2400
+                );
+            }
+        );
+
+
+        updateFileInformation();
+    </script>
+</body>
+</html>

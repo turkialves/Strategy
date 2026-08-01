@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تقرير معالجة ADAA | ADAA Processing Report</title>
+<style>
+        :root {
+            --navy-950: #071b2a;
+            --navy-900: #0b2639;
+            --navy-800: #12364c;
+            --navy-700: #1b4b65;
+            --teal-700: #0f625f;
+            --teal-600: #147a75;
+            --gold-600: #a9823b;
+            --gold-500: #c3a15d;
+            --sand-100: #f5f1e8;
+            --green-700: #17633c;
+            --green-100: #e8f3ec;
+            --red-700: #9f2f2f;
+            --red-100: #f8eaea;
+            --amber-700: #946113;
+            --amber-100: #fbf1da;
+            --purple-700: #6a3f8f;
+            --purple-100: #f0e8f7;
+            --gray-700: #596670;
+            --gray-100: #edf1f3;
+            --ink: #18232d;
+            --muted: #66737e;
+            --line: #d9e0e5;
+            --surface: #ffffff;
+            --page: #edf1f3;
+            --shadow: 0 16px 42px rgba(7, 27, 42, 0.10);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background:
+                linear-gradient(rgba(237, 241, 243, 0.94), rgba(237, 241, 243, 0.94)),
+                repeating-linear-gradient(
+                    45deg,
+                    rgba(11, 38, 57, 0.025) 0,
+                    rgba(11, 38, 57, 0.025) 1px,
+                    transparent 1px,
+                    transparent 10px
+                );
+            font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        .page-shell {
+            width: min(1500px, calc(100% - 36px));
+            margin: 28px auto 38px;
+        }
+
+        .official-header {
+            overflow: hidden;
+            color: #ffffff;
+            background:
+                linear-gradient(115deg, var(--navy-950) 0%, var(--navy-900) 52%, var(--teal-700) 100%);
+            border: 1px solid rgba(195, 161, 93, 0.42);
+            border-radius: 4px;
+            box-shadow: var(--shadow);
+        }
+
+        .gold-line {
+            height: 5px;
+            background: linear-gradient(90deg, var(--gold-600), #e1c98c, var(--gold-600));
+        }
+
+        .header-main {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 24px;
+            padding: 24px 30px;
+        }
+
+        .identity-mark {
+            width: 78px;
+            height: 78px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            background: rgba(255, 255, 255, 0.07);
+            box-shadow: inset 0 0 0 5px rgba(195, 161, 93, 0.10);
+        }
+
+        .identity-mark svg {
+            width: 52px;
+            height: 52px;
+            fill: none;
+            stroke: #e5ce93;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .identity-copy {
+            min-width: 0;
+        }
+
+        .authority-ar {
+            display: block;
+            margin-bottom: 3px;
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .authority-en {
+            display: block;
+            color: rgba(255, 255, 255, 0.76);
+            font-size: 12px;
+            letter-spacing: 1.1px;
+            text-transform: uppercase;
+            direction: ltr;
+            text-align: right;
+        }
+
+        .document-class {
+            min-width: 190px;
+            padding: 12px 16px;
+            border-right: 3px solid var(--gold-500);
+            background: rgba(0, 0, 0, 0.13);
+        }
+
+        .document-class span {
+            display: block;
+            color: rgba(255, 255, 255, 0.66);
+            font-size: 11px;
+        }
+
+        .document-class strong {
+            display: block;
+            margin-top: 2px;
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .report-hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 24px;
+            align-items: end;
+            padding: 28px 30px 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(0, 0, 0, 0.10);
+        }
+
+        .report-title .overline {
+            display: block;
+            margin-bottom: 8px;
+            color: #e4cd94;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .report-title h1 {
+            margin: 0;
+            color: #ffffff;
+            font-size: clamp(28px, 4vw, 44px);
+            line-height: 1.22;
+        }
+
+        .report-title h1 small {
+            display: block;
+            margin-top: 8px;
+            color: rgba(255, 255, 255, 0.70);
+            font-size: 15px;
+            font-weight: 500;
+            direction: ltr;
+            text-align: right;
+        }
+
+        .report-meta {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(150px, 1fr));
+            gap: 1px;
+            background: rgba(255, 255, 255, 0.17);
+            border: 1px solid rgba(255, 255, 255, 0.17);
+        }
+
+        .meta-item {
+            min-height: 78px;
+            padding: 13px 16px;
+            background: rgba(7, 27, 42, 0.72);
+        }
+
+        .meta-item span {
+            display: block;
+            color: rgba(255, 255, 255, 0.58);
+            font-size: 10px;
+            line-height: 1.35;
+        }
+
+        .meta-item strong {
+            display: block;
+            margin-top: 7px;
+            color: #ffffff;
+            font-size: 13px;
+            overflow-wrap: anywhere;
+        }
+
+        .content {
+            margin-top: 22px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            box-shadow: 0 8px 24px rgba(7, 27, 42, 0.055);
+        }
+
+        .section-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 17px 20px;
+            border-bottom: 1px solid var(--line);
+            background: linear-gradient(180deg, #ffffff, #f7f9fa);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 0;
+            color: var(--navy-900);
+            font-size: 18px;
+        }
+
+        .section-title::before {
+            content: "";
+            width: 4px;
+            height: 30px;
+            background: linear-gradient(var(--gold-500), var(--gold-600));
+        }
+
+        .section-title small {
+            display: block;
+            margin-top: 1px;
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 500;
+            direction: ltr;
+            text-align: right;
+        }
+
+        .section-body {
+            padding: 20px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            position: relative;
+            min-height: 140px;
+            padding: 19px;
+            overflow: hidden;
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-top: 4px solid var(--navy-700);
+            box-shadow: 0 6px 18px rgba(7, 27, 42, 0.05);
+        }
+
+        .stat-card.success { border-top-color: var(--green-700); }
+        .stat-card.danger { border-top-color: var(--red-700); }
+        .stat-card.warning { border-top-color: var(--amber-700); }
+        .stat-card.gold { border-top-color: var(--gold-600); }
+        .stat-card.purple { border-top-color: var(--purple-700); }
+
+        .stat-label-ar {
+            display: block;
+            color: var(--navy-900);
+            font-size: 13px;
+            font-weight: 750;
+        }
+
+        .stat-label-en {
+            display: block;
+            margin-top: 1px;
+            color: var(--muted);
+            font-size: 10px;
+            direction: ltr;
+            text-align: right;
+        }
+
+        .stat-value {
+            display: block;
+            margin-top: 16px;
+            color: var(--ink);
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1;
+            direction: ltr;
+            text-align: right;
+        }
+
+        .performance-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 0.6fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .progress-shell {
+            height: 22px;
+            overflow: hidden;
+            background: #e4e9ec;
+            border: 1px solid #d5dde2;
+        }
+
+        .progress-value {
+            height: 100%;
+            background: linear-gradient(90deg, var(--teal-700), var(--teal-600));
+        }
+
+        .progress-caption {
+            margin-top: 12px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .performance-score {
+            padding: 18px;
+            text-align: center;
+            background: var(--navy-900);
+            border-bottom: 4px solid var(--gold-500);
+        }
+
+        .performance-score span {
+            display: block;
+            color: rgba(255, 255, 255, 0.66);
+            font-size: 11px;
+        }
+
+        .performance-score strong {
+            display: block;
+            margin: 4px 0;
+            color: #ffffff;
+            font-size: 38px;
+            line-height: 1.1;
+            direction: ltr;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            min-width: 850px;
+            border-collapse: collapse;
+        }
+
+        th {
+            padding: 13px 12px;
+            color: #ffffff;
+            background: var(--navy-800);
+            border-left: 1px solid rgba(255, 255, 255, 0.10);
+            font-size: 12px;
+            text-align: right;
+            vertical-align: bottom;
+        }
+
+        th small {
+            display: block;
+            margin-top: 2px;
+            color: rgba(255, 255, 255, 0.62);
+            font-size: 9px;
+            font-weight: 500;
+            direction: ltr;
+            text-align: right;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e3e8eb;
+            border-left: 1px solid #edf0f2;
+            font-size: 13px;
+            vertical-align: middle;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #f8fafb;
+        }
+
+        tbody tr:hover {
+            background: #eef5f4;
+        }
+
+        .file-name {
+            direction: ltr;
+            text-align: left;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 12px;
+        }
+
+        .reason-text {
+            color: var(--muted);
+        }
+
+        .status-badge {
+            display: inline-block;
+            min-width: 92px;
+            padding: 5px 10px;
+            border: 1px solid transparent;
+            text-align: center;
+            font-size: 11px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .success-badge { color: var(--green-700); background: var(--green-100); border-color: #cbe2d3; }
+        .danger-badge { color: var(--red-700); background: var(--red-100); border-color: #eccaca; }
+        .warning-badge { color: var(--amber-700); background: var(--amber-100); border-color: #ead8ac; }
+        .duplicate-badge { color: var(--purple-700); background: var(--purple-100); border-color: #d9c6e8; }
+        .muted-badge { color: var(--gray-700); background: var(--gray-100); border-color: #d4dce1; }
+
+        .empty-message {
+            padding: 28px;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        .success-message {
+            color: var(--green-700);
+        }
+
+        .toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .search-input {
+            width: min(430px, 100%);
+            padding: 11px 13px;
+            color: var(--ink);
+            background: #ffffff;
+            border: 1px solid #bdc8cf;
+            border-radius: 2px;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: var(--teal-700);
+            box-shadow: 0 0 0 3px rgba(15, 98, 95, 0.10);
+        }
+
+        .count-label {
+            padding: 9px 13px;
+            color: var(--navy-900);
+            background: var(--sand-100);
+            border-right: 3px solid var(--gold-600);
+            font-size: 12px;
+        }
+
+        details {
+            border: 1px solid var(--line);
+        }
+
+        summary {
+            cursor: pointer;
+            padding: 15px 17px;
+            color: var(--navy-900);
+            background: #f5f7f8;
+            font-weight: 750;
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid var(--line);
+        }
+
+        details .table-wrapper {
+            padding: 12px;
+        }
+
+        .report-footer {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 20px;
+            align-items: center;
+            padding: 18px 22px;
+            color: #ffffff;
+            background: var(--navy-950);
+            border-top: 4px solid var(--gold-600);
+            font-size: 11px;
+        }
+
+        .report-footer small {
+            display: block;
+            color: rgba(255, 255, 255, 0.56);
+            direction: ltr;
+            text-align: right;
+        }
+
+        .confidential {
+            padding: 7px 10px;
+            color: #e5ce93;
+            border: 1px solid rgba(229, 206, 147, 0.48);
+            letter-spacing: 0.8px;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 1100px) {
+            .header-main {
+                grid-template-columns: auto 1fr;
+            }
+
+            .document-class {
+                grid-column: 1 / -1;
+            }
+
+            .report-hero {
+                grid-template-columns: 1fr;
+            }
+
+            .report-meta {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .cards {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 720px) {
+            .page-shell {
+                width: min(100% - 18px, 1500px);
+                margin-top: 9px;
+            }
+
+            .header-main {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .identity-mark {
+                margin: 0 auto;
+            }
+
+            .authority-en {
+                text-align: center;
+            }
+
+            .document-class {
+                border-right: 0;
+                border-top: 3px solid var(--gold-500);
+            }
+
+            .report-hero {
+                padding: 22px 18px;
+            }
+
+            .report-meta {
+                grid-template-columns: 1fr;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .performance-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-head,
+            .toolbar {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .section-body {
+                padding: 13px;
+            }
+
+            .report-footer {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .report-footer small {
+                text-align: center;
+            }
+        }
+
+        @media print {
+            @page {
+                size: A4 landscape;
+                margin: 10mm;
+            }
+
+            body {
+                background: #ffffff;
+            }
+
+            .page-shell {
+                width: 100%;
+                margin: 0;
+            }
+
+            .official-header,
+            .section,
+            .stat-card {
+                box-shadow: none;
+            }
+
+            .search-input {
+                display: none;
+            }
+
+            .section,
+            .stat-card {
+                break-inside: avoid;
+            }
+        }
+.type-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.type-box{padding:18px;background:#fff;border:1px solid var(--line);border-right:4px solid var(--teal-700)}
+.type-box span{display:block;color:var(--muted);font-size:12px}
+.type-box strong{display:block;margin-top:7px;color:var(--navy-900);font-size:28px;direction:ltr;text-align:right}
+@media(max-width:720px){.type-summary{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="page-shell">
+<header class="official-header">
+<div class="gold-line"></div>
+<div class="header-main">
+<div class="identity-mark" aria-hidden="true">
+<svg viewBox="0 0 64 64"><path d="M32 6l18 8v14c0 13-7.7 23.5-18 29-10.3-5.5-18-16-18-29V14z"></path><path d="M32 18v26M19 31h26"></path><path d="M26 13h12M26 49h12"></path></svg>
+</div>
+<div class="identity-copy">
+<span class="authority-ar">منظومة الخدمات الصحية المؤسسية</span>
+<span class="authority-en">Institutional Healthcare Services System</span>
+</div>
+<div class="document-class">
+<span>تصنيف الوثيقة | Document Classification</span>
+<strong>تقرير تشغيلي داخلي | Internal Operational Report</strong>
+</div>
+</div>
+
+<div class="report-hero">
+<div class="report-title">
+<span class="overline">إدارة الاستراتيجية والأداء | Strategy & Performance Department</span>
+<h1>تقرير معالجة مؤشرات ADAA الأسبوعية<small>ADAA Weekly Processing Report</small></h1>
+</div>
+<div class="report-meta">
+<div class="meta-item"><span>الملف الناتج<br>Output File</span><strong>Processed_LAB&amp;BB Mastersheet 2026 علي.xlsx</strong></div>
+<div class="meta-item"><span>نوع المعالجة<br>Processing Type</span><strong>أسبوعي | Weekly</strong></div>
+<div class="meta-item"><span>تاريخ الإصدار<br>Issue Date</span><strong>2026-07-30 12:53</strong></div>
+</div>
+</div>
+</header>
+
+<main class="content">
+<section class="cards">
+<article class="stat-card"><span class="stat-label-ar">إجمالي الملفات</span><span class="stat-label-en">Total Files</span><strong class="stat-value">49</strong></article>
+<article class="stat-card success"><span class="stat-label-ar">تمت المعالجة بنجاح</span><span class="stat-label-en">Successfully Processed</span><strong class="stat-value">49</strong></article>
+<article class="stat-card danger"><span class="stat-label-ar">ملفات فشلت</span><span class="stat-label-en">Failed Files</span><strong class="stat-value">0</strong></article>
+<article class="stat-card gold"><span class="stat-label-ar">نسبة النجاح</span><span class="stat-label-en">Success Rate</span><strong class="stat-value">100.0%</strong></article>
+</section>
+
+<section class="section">
+<div class="section-head"><h2 class="section-title"><span>توزيع الملفات حسب البرنامج<small>Files by ADAA Program</small></span></h2></div>
+<div class="section-body type-summary">
+<div class="type-box"><span>المختبر | Laboratory (LB)</span><strong>49</strong></div>
+<div class="type-box"><span>بنك الدم | Blood Bank (BB)</span><strong>0</strong></div>
+<div class="type-box"><span>غرف العمليات | Operating Room (OR)</span><strong>0</strong></div>
+</div>
+</section>
+
+<section class="section">
+<div class="section-head"><h2 class="section-title"><span>مؤشر الأداء العام<small>Overall Processing Performance</small></span></h2></div>
+<div class="section-body performance-grid">
+<div>
+<div class="progress-shell"><div class="progress-value" style="width:100.0%"></div></div>
+<div class="progress-caption">تمت معالجة <strong>49</strong> من أصل <strong>49</strong> ملف.</div>
+</div>
+<div class="performance-score"><span>نسبة النجاح | Success Rate</span><strong>100.0%</strong><span>النتيجة التشغيلية | Operational Result</span></div>
+</div>
+</section>
+
+<section class="section">
+<div class="section-head"><h2 class="section-title"><span>تفاصيل معالجة الملفات<small>File Processing Details</small></span></h2></div>
+<div class="section-body">
+<div class="toolbar">
+<input id="detailSearch" class="search-input" type="text" placeholder="ابحث باسم الملف أو المنشأة أو النوع أو الحالة" onkeyup="filterDetailTable()">
+<div class="count-label">عدد النتائج: <strong>49</strong></div>
+</div>
+<div class="table-wrapper">
+<table id="detailTable">
+<thead><tr>
+<th>اسم الملف<small>File Name</small></th>
+<th>البرنامج<small>Program</small></th>
+<th>رمز المنشأة<small>Facility Code</small></th>
+<th>الأسبوع<small>Week</small></th>
+<th>شيت الماستر<small>Master Sheet</small></th>
+<th>صف الوجهة<small>Target Row</small></th>
+<th>الحالة<small>Status</small></th>
+<th>الملاحظة<small>Note</small></th>
+</tr></thead>
+<tbody><tr class='detail-row'><td class='file-name'>LAB-W1-GEN-7-2026-JUN-21.xlsx</td><td>LB</td><td>W1-GEN-7</td><td>Week 3-Jun</td><td>Weekly Data</td><td>355</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-GEN-3-2026-JUN-21.xlsx</td><td>LB</td><td>W1-GEN-3</td><td>Week 3-Jun</td><td>Weekly Data</td><td>351</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-QN-GEN-4-2026-JUN-21.xlsx</td><td>LB</td><td>QN-GEN-4</td><td>Week 3-Jun</td><td>Weekly Data</td><td>362</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-QN-GEN-1-2026-JUN-21.xlsx</td><td>LB</td><td>QN-GEN-1</td><td>Week 3-Jun</td><td>Weekly Data</td><td>359</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-GEN-6-2026-JUN-21.xlsx</td><td>LB</td><td>W1-GEN-6</td><td>Week 3-Jun</td><td>Weekly Data</td><td>354</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-GEN-2-2026-JUN-21.xlsx</td><td>LB</td><td>W1-GEN-2</td><td>Week 3-Jun</td><td>Weekly Data</td><td>350</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-QN-GEN-5-2026-JUN-21.xlsx</td><td>LB</td><td>QN-GEN-5</td><td>Week 3-Jun</td><td>Weekly Data</td><td>363</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-GEN-5-2026-JUN-21.xlsx</td><td>LB</td><td>W1-GEN-5</td><td>Week 3-Jun</td><td>Weekly Data</td><td>353</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-QN-GEN-2-2026-JUN-21.xlsx</td><td>LB</td><td>QN-GEN-2</td><td>Week 3-Jun</td><td>Weekly Data</td><td>360</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-MDC-1-2026-JUN-21.xlsx</td><td>LB</td><td>W1-MDC-1</td><td>Week 3-Jun</td><td>Weekly Data</td><td>358</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-GEN-1-2026-JUN-21.xlsx</td><td>LB</td><td>W1-GEN-1</td><td>Week 3-Jun</td><td>Weekly Data</td><td>349</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-GEN-4-2026-JUN-21.xlsx</td><td>LB</td><td>W1-GEN-4</td><td>Week 3-Jun</td><td>Weekly Data</td><td>352</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-QN-GEN-3-2026-JUN-21.xlsx</td><td>LB</td><td>QN-GEN-3</td><td>Week 3-Jun</td><td>Weekly Data</td><td>361</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-MCH-1-2026-JUN-21.xlsx</td><td>LB</td><td>W1-MCH-1</td><td>Week 3-Jun</td><td>Weekly Data</td><td>357</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-LTC-1-2026-JUN-21.xlsx</td><td>LB</td><td>W1-LTC-1</td><td>Week 3-Jun</td><td>Weekly Data</td><td>356</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-QN-GEN-2-2026-JUN-28.xlsx</td><td>LB</td><td>QN-GEN-2</td><td>Week 4-Jun</td><td>Weekly Data</td><td>375</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-QN-GEN-4-2026-JUN-28.xlsx</td><td>LB</td><td>QN-GEN-4</td><td>Week 4-Jun</td><td>Weekly Data</td><td>377</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-QN-GEN-1-2026-JUN-28.xlsx</td><td>LB</td><td>QN-GEN-1</td><td>Week 4-Jun</td><td>Weekly Data</td><td>374</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-MCH-1-2026-JUN-14.xlsx</td><td>LB</td><td>W1-MCH-1</td><td>Week 2-Jun</td><td>Weekly Data</td><td>342</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-LTC-1-2026-JUN-14.xlsx</td><td>LB</td><td>W1-LTC-1</td><td>Week 2-Jun</td><td>Weekly Data</td><td>341</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-GEN-4-2026-JUN-14.xlsx</td><td>LB</td><td>W1-GEN-4</td><td>Week 2-Jun</td><td>Weekly Data</td><td>337</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-QN-GEN-3-2026-JUN-14.xlsx</td><td>LB</td><td>QN-GEN-3</td><td>Week 2-Jun</td><td>Weekly Data</td><td>346</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-MDC-1-2026-JUN-14.xlsx</td><td>LB</td><td>W1-MDC-1</td><td>Week 2-Jun</td><td>Weekly Data</td><td>343</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-GEN-1-2026-JUN-14.xlsx</td><td>LB</td><td>W1-GEN-1</td><td>Week 2-Jun</td><td>Weekly Data</td><td>334</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-GEN-5-2026-JUN-14.xlsx</td><td>LB</td><td>W1-GEN-5</td><td>Week 2-Jun</td><td>Weekly Data</td><td>338</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-QN-GEN-2-2026-JUN-14.xlsx</td><td>LB</td><td>QN-GEN-2</td><td>Week 2-Jun</td><td>Weekly Data</td><td>345</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-GEN-2-2026-JUN-14.xlsx</td><td>LB</td><td>W1-GEN-2</td><td>Week 2-Jun</td><td>Weekly Data</td><td>335</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-QN-GEN-5-2026-JUN-14.xlsx</td><td>LB</td><td>QN-GEN-5</td><td>Week 2-Jun</td><td>Weekly Data</td><td>348</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-QN-GEN-1-2026-JUN-14.xlsx</td><td>LB</td><td>QN-GEN-1</td><td>Week 2-Jun</td><td>Weekly Data</td><td>344</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-GEN-6-2026-JUN-14.xlsx</td><td>LB</td><td>W1-GEN-6</td><td>Week 2-Jun</td><td>Weekly Data</td><td>339</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-GEN-3-2026-JUN-14.xlsx</td><td>LB</td><td>W1-GEN-3</td><td>Week 2-Jun</td><td>Weekly Data</td><td>336</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-QN-GEN-4-2026-JUN-14.xlsx</td><td>LB</td><td>QN-GEN-4</td><td>Week 2-Jun</td><td>Weekly Data</td><td>347</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-GEN-7-2026-JUN-14.xlsx</td><td>LB</td><td>W1-GEN-7</td><td>Week 2-Jun</td><td>Weekly Data</td><td>340</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-QN-GEN-1-2026-JUN-07.xlsx</td><td>LB</td><td>QN-GEN-1</td><td>Week 1-Jun</td><td>Weekly Data</td><td>329</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-GEN-6-2026-JUN-07.xlsx</td><td>LB</td><td>W1-GEN-6</td><td>Week 1-Jun</td><td>Weekly Data</td><td>324</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-GEN-2-2026-JUN-07.xlsx</td><td>LB</td><td>W1-GEN-2</td><td>Week 1-Jun</td><td>Weekly Data</td><td>320</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-MDC-1-2026-JUN-7.xlsx</td><td>LB</td><td>W1-MDC-1</td><td>Week 1-Jun</td><td>Weekly Data</td><td>328</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-QN-GEN-5-2026-JUN-07.xlsx</td><td>LB</td><td>QN-GEN-5</td><td>Week 1-Jun</td><td>Weekly Data</td><td>333</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-GEN-7-2026-JUN-07.xlsx</td><td>LB</td><td>W1-GEN-7</td><td>Week 1-Jun</td><td>Weekly Data</td><td>325</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-GEN-3-2026-JUN-07.xlsx</td><td>LB</td><td>W1-GEN-3</td><td>Week 1-Jun</td><td>Weekly Data</td><td>321</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-QN-GEN-4-2026-JUN-07.xlsx</td><td>LB</td><td>QN-GEN-4</td><td>Week 1-Jun</td><td>Weekly Data</td><td>332</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-GEN-4-2026-JUN-07.xlsx</td><td>LB</td><td>W1-GEN-4</td><td>Week 1-Jun</td><td>Weekly Data</td><td>322</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-GEN-6-2026-JUN-07-2.xlsx</td><td>LB</td><td>W1-GEN-6</td><td>Week 1-Jun</td><td>Weekly Data</td><td>324</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-QN-GEN-3-2026-JUN-07.xlsx</td><td>LB</td><td>QN-GEN-3</td><td>Week 1-Jun</td><td>Weekly Data</td><td>331</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-MCH-1-2026-JUN-07.xlsx</td><td>LB</td><td>W1-MCH-1</td><td>Week 1-Jun</td><td>Weekly Data</td><td>327</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-LTC-1-2026-JUN-07.xlsx</td><td>LB</td><td>W1-LTC-1</td><td>Week 1-Jun</td><td>Weekly Data</td><td>326</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-GEN-5-2026-JUNE-7.xlsx</td><td>LB</td><td>W1-GEN-5</td><td>Week 1-Jun</td><td>Weekly Data</td><td>323</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-QN-GEN-2-2026-JUN-07.xlsx</td><td>LB</td><td>QN-GEN-2</td><td>Week 1-Jun</td><td>Weekly Data</td><td>330</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr><tr class='detail-row'><td class='file-name'>LAB-W1-GEN-1-2026-JUN-07.xlsx</td><td>LB</td><td>W1-GEN-1</td><td>Week 1-Jun</td><td>Weekly Data</td><td>319</td><td><span class='status-badge success-badge'>تم النقل</span></td><td class='reason-text'>تمت مطابقة المنشأة والأسبوع ونقل البيانات بنجاح.</td></tr></tbody>
+</table>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="section-body">
+<details>
+<summary>عرض تفاصيل الأخطاء | View Error Details (0)</summary>
+<div class="table-wrapper">
+<table>
+<thead><tr><th>اسم الملف<small>File Name</small></th><th>سبب الخطأ<small>Error Reason</small></th></tr></thead>
+<tbody><tr><td colspan='2' class='empty-message success-message'>لا توجد أخطاء.</td></tr></tbody>
+</table>
+</div>
+</details>
+</div>
+</section>
+</main>
+
+<footer class="report-footer">
+<div><span>تم إنشاء هذا التقرير آليًا بواسطة نظام معالجة مؤشرات ADAA.</span><small>This report was generated automatically by the ADAA Processing System.</small></div>
+<div class="confidential">للاستخدام الداخلي | INTERNAL USE</div>
+</footer>
+</div>
+
+<script>
+function filterDetailTable(){
+const input=document.getElementById("detailSearch").value.toLowerCase();
+const rows=document.querySelectorAll("#detailTable tbody .detail-row");
+rows.forEach(function(row){row.style.display=row.innerText.toLowerCase().includes(input)?"":"none";});
+}
+</script>
+</body>
+</html>

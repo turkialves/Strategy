@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b2f5b">
+
+    <title>ADAA Process</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+    <style>
+        .back-home {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .month-field {
+            width: 100%;
+            min-height: 56px;
+            padding: 0 18px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.08);
+            color: inherit;
+            font: inherit;
+            outline: none;
+        }
+
+        .month-field option {
+            color: #102a43;
+            background: #ffffff;
+        }
+
+        .month-field:focus {
+            border-color: rgba(87, 196, 255, 0.85);
+            box-shadow: 0 0 0 4px rgba(87, 196, 255, 0.12);
+        }
+
+        .month-card {
+            cursor: default;
+        }
+
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 18px;
+            border-radius: 14px;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: rgba(255, 255, 255, 0.06);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <main class="page">
+        <section class="shell">
+
+            <nav class="topbar" aria-label="رأس النظام">
+                <div class="brand">
+                    <div class="brand-mark" aria-hidden="true">
+                        <svg viewBox="0 0 48 48">
+                            <path
+                                d="M24 5l15 8.6v17.2L24 39.5 9 30.8V13.6L24 5z"
+                            />
+                            <path
+                                d="M24 14v20M14.5 19.5l19 11M33.5 19.5l-19 11"
+                            />
+                        </svg>
+                    </div>
+
+                    <div>
+                        <strong>Strategy System</strong>
+                    </div>
+                </div>
+
+                <a href="/" class="home-button">
+                    الرئيسية | Home
+                </a>
+            </nav>
+
+            <section class="hero">
+                <div class="hero-copy">
+                    <span class="pill">
+                        ADAA Process | معالجة مؤشرات أداء
+                    </span>
+
+                    <h1>
+                        معالجة بيانات
+                        <br>
+                        <em>ADAA</em>
+                    </h1>
+
+                    <p>
+                        اختر نوع المعالجة للانتقال إلى البرنامج الأسبوعي أو الشهري،
+                        ثم أكمل رفع الملفات ومعالجة مؤشرات أداء.
+                        <span class="english-copy">
+                            Select weekly or monthly ADAA processing.
+                        </span>
+                    </p>
+
+                    <div class="trust-row">
+                        <span>المعالجة حسب الفترة والمنشأة</span>
+                        <span>تحديث ملف الماستر بأمان</span>
+                    </div>
+                </div>
+
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="visual-card">
+                        <div class="visual-top">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <div class="visual-grid">
+                            <div class="metric">
+                                <small>نوع المعالجة</small>
+                                <strong>2</strong>
+                            </div>
+
+                            <div class="metric success">
+                                <small>النظام</small>
+                                <strong>ADAA</strong>
+                            </div>
+
+                            <div class="chart-bars">
+                                <i style="height:32%"></i>
+                                <i style="height:48%"></i>
+                                <i style="height:60%"></i>
+                                <i style="height:72%"></i>
+                                <i style="height:84%"></i>
+                                <i style="height:96%"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="floating-chip chip-one">
+                        ✓ معالجة أسبوعية
+                    </div>
+
+                    <div class="floating-chip chip-two">
+                        ↗ معالجة شهرية
+                    </div>
+                </div>
+            </section>
+
+            {% if error %}
+            <div class="alert alert-error" role="alert">
+                <div class="alert-icon">!</div>
+
+                <div class="alert-content">
+                    <strong>
+                        تعذر إكمال العملية | Processing Failed
+                    </strong>
+
+                    <p>{{ error }}</p>
+
+                    {% if details %}
+                    <details>
+                        <summary>
+                            عرض التفاصيل التقنية | Technical Details
+                        </summary>
+
+                        <pre>{{ details }}</pre>
+                    </details>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+
+            <section class="workspace">
+                <div class="section-heading">
+                    <div>
+                        <span class="step-kicker">
+                            اختر نوع العملية | STEP 01
+                        </span>
+
+                        <h2>ADAA Processing</h2>
+                    </div>
+                </div>
+
+                <div class="upload-grid">
+                    <a class="upload-card" href="/adaa-weekly" style="text-decoration:none;color:inherit;">
+                        <span class="upload-index">01</span>
+                        <span class="upload-icon">📅</span>
+
+                        <strong>
+                            المعالجة الأسبوعية
+                            <small>Weekly Processing</small>
+                        </strong>
+
+                        <p>
+                            معالجة ملفات LB وBlood Bank وOR الأسبوعية
+                        </p>
+
+                        <span class="file-type">WEEKLY</span>
+                    </a>
+
+                    <a class="upload-card" href="/adaa-monthly" style="text-decoration:none;color:inherit;">
+                        <span class="upload-index">02</span>
+                        <span class="upload-icon">🗓️</span>
+
+                        <strong>
+                            المعالجة الشهرية
+                            <small>Monthly Processing</small>
+                        </strong>
+
+                        <p>
+                            الانتقال إلى برنامج معالجة مؤشرات أداء الشهرية
+                        </p>
+
+                        <span class="file-type">MONTHLY</span>
+                    </a>
+                </div>
+            </section>
+
+            <footer>
+                <span>ADAA Process</span>
+                <span>Strategy System</span>
+            </footer>
+
+        </section>
+    </main>
+
+
+</body>
+</html>
