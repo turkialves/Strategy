@@ -1,0 +1,48 @@
+name: Build Mac App
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-mac:
+    runs-on: macos-latest
+
+    steps:
+      - name: Download project
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pyinstaller
+
+      - name: Build Mac application
+        run: |
+          pyinstaller \
+            --noconfirm \
+            --windowed \
+            --name "Strategy" \
+            --add-data "templates:templates" \
+            --add-data "static:static" \
+            app.py
+
+      - name: Ad-hoc sign application
+        run: |
+          codesign --force --deep --sign - "dist/Strategy.app"
+
+      - name: Zip Mac application
+        run: |
+          cd dist
+          ditto -c -k --sequesterRsrc --keepParent "Strategy.app" "Strategy-Mac.zip"
+
+      - name: Upload Mac application
+        uses: actions/upload-artifact@v4
+        with:
+          name: Strategy-Mac
+          path: dist/Strategy-Mac.zip
