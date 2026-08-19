@@ -1,4 +1,4 @@
-name: Build Mac App
+name: Build Mac App M1
 
 on:
   workflow_dispatch:
@@ -16,17 +16,24 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Check architecture
+        run: |
+          uname -m
+          python -c "import platform; print(platform.machine())"
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pyinstaller
 
-      - name: Build Mac application
+      - name: Build Mac M1 application
         run: |
           pyinstaller \
             --noconfirm \
+            --clean \
             --windowed \
+            --target-arch arm64 \
             --name "Strategy" \
             --add-data "templates:templates" \
             --add-data "static:static" \
@@ -36,13 +43,18 @@ jobs:
         run: |
           codesign --force --deep --sign - "dist/Strategy.app"
 
+      - name: Verify application
+        run: |
+          file "dist/Strategy.app/Contents/MacOS/Strategy"
+          codesign --verify --deep --strict --verbose=2 "dist/Strategy.app"
+
       - name: Zip Mac application
         run: |
           cd dist
-          ditto -c -k --sequesterRsrc --keepParent "Strategy.app" "Strategy-Mac.zip"
+          ditto -c -k --sequesterRsrc --keepParent "Strategy.app" "Strategy-M1.zip"
 
       - name: Upload Mac application
         uses: actions/upload-artifact@v4
         with:
-          name: Strategy-Mac
-          path: dist/Strategy-Mac.zip
+          name: Strategy-M1
+          path: dist/Strategy-M1.zip
