@@ -33,7 +33,7 @@ jobs:
             --noconfirm \
             --clean \
             --windowed \
-            --target-arch arm64 \
+            --target-arch x86_64 \
             --name "Strategy" \
             --icon "icon.icns" \
             --add-data "templates:templates" \
