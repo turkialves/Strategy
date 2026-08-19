@@ -35,6 +35,7 @@ jobs:
             --windowed \
             --target-arch arm64 \
             --name "Strategy" \
+            --icon "icon.icns" \
             --add-data "templates:templates" \
             --add-data "static:static" \
             app.py
